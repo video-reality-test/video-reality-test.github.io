@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta property='og:title' content='Video Reality Test: Can AI-Generated ASMR Videos fool VLMs and Human?' />
+  <meta property='og:description' content='Video Reality Test: Can AI-Generated ASMR Videos fool VLMs and Human?' />
+  <meta property='og:url' content='https://oahzxl.github.io/VReasonBench/' />
+  <meta property='og:image:width' content='1200' />
+  <meta property='og:image:height' content='663' />
+  <meta property="og:type" content='website' />
+  <meta name="description" content="Video Reality Test: Can AI-Generated ASMR Videos fool VLMs and Human?">
+  <meta name="keywords" content="Video Reality Test: Can AI-Generated ASMR Videos fool VLMs and Human?">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Video Reality Test: Can AI-Generated ASMR Videos fool VLMs and Human?</title>
+
+  <!-- 样式库引用 -->
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/tab_gallery.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+  <link rel="stylesheet" href="juxtapose/css/juxtapose.css">
+  <link href="https://fonts.cdnfonts.com/css/menlo" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/image_card_fader.css">
+  <link rel="stylesheet" href="./static/css/image_card_slider.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Patrick+Hand|Google+Sans|Noto+Sans|Castoro|Lato|Open+Sans&effect=shadow-multiple|emboss|3d">
+
+  <!-- 脚本引用 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="./static/js/magnifier.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<style>
+  @import url('https://fonts.cdnfonts.com/css/menlo');
+
+  body {
+    font-family: "Lato", sans-serif;
+    font-size: 1.1em;
+    background-color: #f9f9f9;
+  }
+
+  .title.is-2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    color: #363636;
+  }
+
+  /* --- 核心修复：调整 Section 间距 --- */
+  .section {
+    padding: 2.5rem 1.5rem; /* 全局稍微减小一点 padding */
+  }
+
+  /* 专门针对 Leaderboard 的底部进行收缩 */
+  #leaderboard {
+    padding-bottom: 1rem !important; 
+  }
+
+  /* 专门针对 Experiment Results 的顶部进行收缩 */
+  #experiment-results {
+    padding-top: 1rem !important;
+  }
+  /* ---------------------------------- */
+
+  .content img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* 视频展示区样式 */
+  .comparison-group {
+    background: #fff;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+  }
+
+  .group-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #4a4a4a;
+    border-left: 4px solid #3273dc;
+    padding-left: 12px;
+  }
+
+  .video-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .simulation-item {
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 calc(33.333% - 20px); 
+    max-width: 320px; 
+    min-width: 220px;
+    background: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .simulation-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  }
+
+  .group-large .simulation-item {
+    flex: 0 1 calc(20% - 20px); 
+    max-width: 200px;
+    min-width: 150px;
+  }
+
+  .simulation-item video {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 9/16;
+    object-fit: cover;
+  }
+
+  .simulation-label {
+    padding: 10px 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+    color: #4a4a4a;
+    background-color: #fff;
+    margin: 0;
+    border-top: 1px solid #f5f5f5;
+  }
+
+  .label-real { color: #209cee; }
+
+  @media screen and (max-width: 768px) {
+    .simulation-item, .group-large .simulation-item {
+      flex: 0 1 100%;
+      max-width: 100%;
+    }
+    .comparison-group { padding: 15px; }
+  }
+
+  .author-block { display: inline-block; margin-right: 10px; }
+  .publication-links { margin-top: 20px; }
+  .abstract-text { font-size: 1.1em !important; }
+</style>
+
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <br><br>
+            <h1 class="title is-2 publication-title" style="font-size: 2.2rem">
+              Video Reality Test: Can AI-Generated ASMR Videos fool VLMs and Human?
+            </h1>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><span class="author-name">Jiaqi Wang</span><sup>1*</sup>,</span>
+              <span class="author-block"><span class="author-name">Weijia Wu</span><sup>2*</sup>,</span>
+              <span class="author-block"><span class="author-name">Yi Zhan</span><sup>1</sup>,</span>
+              <span class="author-block"><span class="author-name">Rui Zhao</span><sup>2</sup>,</span>
+              <span class="author-block"><span class="author-name">Ming Hu</span><sup>1</sup>,</span>
+              <span class="author-block"><span class="author-name">James Cheng</span><sup>1</sup>,</span>
+              <span class="author-block"><span class="author-name">Wei Liu</span><sup>3</sup>,</span>
+              <span class="author-block"><span class="author-name">Philip Torr</span><sup>4</sup>,</span>
+              <span class="author-block"><span class="author-name">Kevin Qinghong Lin</span><sup>4†</sup></span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>The Chinese University of Hong Kong (CUHK)</span>
+              <span class="author-block"><sup>2</sup>National University of Singapore (NUS)</span>
+              <span class="author-block"><sup>3</sup>Video Rebirth</span>
+              <span class="author-block"><sup>4</sup>University of Oxford</span>
+            </div>
+
+            <div class="is-size-6 publication-authors">
+              (* indicates equal contribution, † indicates corresponding author)
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- Code Link -->
+                <span class="link-block">
+                  <a href="https://github.com/kokolerk/Video_Reality_Test" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                
+                <!-- Paper Link -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2511.16668v1" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+
+                <!-- HuggingFace Dataset -->
+                <span class="link-block">
+                  <a href="https://huggingface.co/datasets/kolerk/Video_Reality_Test" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-database"></i></span>
+                    <span>HuggingFace</span>
+                  </a>
+                </span>
+
+                <!-- ModelScope Dataset -->
+                <span class="link-block">
+                  <a href="https://modelscope.cn/datasets/wjqkoko/Video_Reality_Test" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-images"></i></span>
+                    <span>ModelScope</span>
+                  </a>
+                </span>
+
+                <!-- BibTex Link -->
+                <span class="link-block">
+                  <a href="#bibtex" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="ai ai-obp"></i></span>
+                    <span>BibTex</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Abstract Section -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-2" style="text-align: center;">Abstract</h2>
+      <div class="content has-text-justified">
+        <p class="abstract-text">
+          Recent advances in video generation have produced vivid content that are often indistinguishable from real
+          videos, making AI-generated video detection an emerging societal challenge.
+          Prior AIGC detection benchmarks mostly evaluate video without audio, target broad narrative domains, and focus
+          on classification solely.
+          Yet it remains unclear whether state-of-the-art video generation models can produce immersive, audio-paired
+          videos that reliably deceive humans and VLMs.
+          To this end, we introduce Video Reality Test, an ASMR-sourced video benchmark suite for testing perceptual
+          realism under tight audio–visual coupling, featuring the following dimensions:
+          <b>(i) Immersive ASMR video-audio sources.</b>
+          Built on carefully curated real ASMR videos, the benchmark targets fine-grained action–object interactions
+          with diversity across objects, actions, and backgrounds.
+          <b>(ii) Peer-Review evaluation.</b>
+          An adversarial creator–reviewer protocol where video generation models act as creators aiming to fool
+          reviewers, while VLMs serve as reviewers seeking to identify fakeness.
+          Our experimental findings show:
+          The best creator Veo3.1-Fast even fools most VLMs: the strongest reviewer (Gemini 2.5-Pro) achieves only 56%
+          accuracy (random 50%), far below that of human experts (81.25%).
+          Adding audio improves real–fake discrimination, yet superficial cues such as watermarks can still
+          significantly mislead models.
+          These findings delineate the current boundary of video generation realism and expose limitations of VLMs in
+          perceptual fidelity and audio–visual consistency.
+        </p>
+      </div>
+    </div>
+
+    <!-- Figure 1 -->
+    <div class="container is-max-desktop" style="margin-top: 2rem;">
+      <img src="./static/images/figure1.jpg" class="interpolation-image" style="width: 100%; height: auto;" />
+      <div class="figure-caption" style="font-size: 0.9rem; color: #555; margin-top: 0.5rem; text-align: justify;">
+        Figure 1. An overview of Peer-Review framework for ASMR video reality testing. Video generation models
+        (“creators”) attempt to synthesize fake ASMR videos that can fool multimodal reviewers, while
+        video-understanding models (“reviewers”) aim to detect fakes.
+      </div>
+    </div>
+
+    <!-- Figure 2 -->
+    <div class="container is-max-desktop" style="margin-top: 2rem;">
+      <img src="./static/images/figure2.jpg" class="interpolation-image" style="width: 100%; height: auto;" />
+      <div class="figure-caption" style="font-size: 0.9rem; color: #555; margin-top: 0.5rem; text-align: justify;">
+        Figure 2. Illustration of Video Reality Test creation pipeline, encompassing four phases: Collection, Preprocessing, Captioning, and Clustering.
+      </div>
+    </div>
+  </section>
+
+  <!-- Data Analysis Section -->
+  <section class="section" style="background-color: #f5f5f5;">
+    <div class="container is-max-desktop">
+      <h2 class="title is-2" style="text-align: center;">Data Analysis</h2>
+      <div class="content has-text-justified">
+        <p style="font-size: 1.1rem;">
+          We release the complete ASMR based Video Reality Test corpus: real videos, extracted images, prompts, and outputs from 13 different video-generation settings 
+          (OpenSoraV2 variants，Wan2.2 variants, Sora2，Veo3.1-fast,  Hunyuan，StepFun, etc.). For each of the 149 scenes we therefore provide 1 + k clips (with k = 13 
+          fakery families). Both ModelScope and Hugging Face mirrors host identical contents.
+        </p>
+      </div>
+    </div>
+
+    <!-- Figure 3 -->
+    <div class="container is-max-desktop" style="margin-top: 2rem;">
+      <img src="./static/images/figure3.jpg" class="interpolation-image" style="width: 100%; height: auto;" />
+      <div class="figure-caption" style="font-size: 0.9rem; color: #555; margin-top: 0.5rem; text-align: justify;">
+        Figure 3. Detailed analysis of Video Reality Test. (a) Example instances across different dimensions. (b) Distribution statistics. (c) Action statistics and time distribution.
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       LEADERBOARDS SECTION
+       ========================================= -->
+  <section class="section" id="leaderboard">
+    <div class="container is-max-desktop">
+      <h2 class="title is-2" style="text-align: center; margin-bottom: 20px;">Leaderboards</h2>
+
+      <div class="notification is-light has-text-centered" style="background-color: #f5f7fa; border: 1px solid #e1e4e8; border-radius: 8px;">
+        <p style="font-size: 1rem; color: #4a4a4a;">
+          <span class="icon" style="vertical-align: middle;"><i class="far fa-envelope"></i></span>
+          Please contact us via email (<strong>wjqkoko@foxmail.com</strong>) to update and submit your model results. 
+        </p>
+      </div>
+
+      <style>
+        .table-card {
+          background: #fff;
+          border-radius: 12px;
+          box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+          border: 1px solid #eaeaea;
+          padding: 25px;
+          margin-bottom: 40px;
+        }
+        .table-caption {
+          text-align: left;
+          margin-bottom: 15px;
+          font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        .table-caption-title {
+          font-weight: 700;
+          font-size: 1.05rem;
+          color: #2c3e50;
+          display: block;
+          margin-bottom: 4px;
+        }
+        .table-caption-desc {
+          font-size: 0.9rem;
+          color: #7f8c8d;
+          font-weight: 400;
+          line-height: 1.4;
+        }
+        .academic-table {
+          width: 100%;
+          border-collapse: collapse;
+          font-family: "Lato", "Noto Sans", sans-serif;
+          font-size: 0.9rem;
+          color: #333;
+        }
+        .academic-table th {
+          font-weight: 600;
+          background-color: #fff;
+          border-top: 2px solid #333;
+          border-bottom: 2px solid #dbdbdb; /* 修复表头边框 */
+          padding: 12px 8px;
+          text-align: center;
+          vertical-align: middle;
+          color: #2c3e50;
+        }
+        .academic-table th:first-child, .academic-table td:first-child {
+          text-align: left;
+          padding-left: 10px;
+        }
+        .academic-table td {
+          padding: 10px 8px;
+          border-bottom: 1px solid #eee;
+          text-align: center;
+          vertical-align: middle;
+        }
+        .academic-table tr:last-child td { border-bottom: 2px solid #333; }
+        .group-header td {
+          background-color: #f8f9fa;
+          font-weight: 600;
+          text-align: left;
+          padding-left: 15px;
+          color: #555;
+          font-style: italic;
+          font-size: 0.85rem;
+          border-bottom: 1px solid #ddd;
+        }
+        .rank-1 { background-color: #FFF3CD !important; color: #856404; font-weight: bold; }
+        .rank-2 { background-color: #F0F2F5 !important; color: #495057; font-weight: bold; }
+        .rank-3 { background-color: #FBEFE3 !important; color: #9C6546; font-weight: bold; }
+        .highlight-row td { background-color: #f8f4fc !important; }
+        .model-link { color: #3498db; text-decoration: none; transition: color 0.2s; }
+        .model-link:hover { color: #1d6fa5; text-decoration: underline; }
+        .icon-check { color: #2ecc71; font-weight: bold; }
+        .icon-cross { color: #e74c3c; font-weight: bold; }
+        .diff-val { color: #e74c3c; font-size: 0.75em; margin-left: 2px; }
+        .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      </style>
+
+      <!-- TABLE 1 -->
+      <div class="table-card">
+        <div class="table-caption">
+          <span class="table-caption-title">Table 1. Performance comparison on Video Reality Test for video understanding.</span>
+          <span class="table-caption-desc">
+            We compare various VLMs (Open-source and Proprietary) against human performance. 
+            <span class="rank-1" style="padding:0 4px; font-size:0.8em; border-radius:3px;">1st</span>, 
+            <span class="rank-2" style="padding:0 4px; font-size:0.8em; border-radius:3px;">2nd</span>, and 
+            <span class="rank-3" style="padding:0 4px; font-size:0.8em; border-radius:3px;">3rd</span> denote the best, second, and third performers.
+          </span>
+        </div>
+        
+        <div class="table-responsive">
+          <table class="academic-table">
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th><a href="https://deepmind.google/technologies/veo/" target="_blank" class="model-link">Veo3.1<br>Fast</a></th>
+                <th><a href="https://openai.com/sora" target="_blank" class="model-link">Sora2</a></th>
+                <th><a href="https://huggingface.co/Wan-AI/Wan2.1-T2V-14B" target="_blank" class="model-link">Wan2.2<br>A14B</a></th>
+                <th><a href="https://huggingface.co/Wan-AI" target="_blank" class="model-link">Wan2.2<br>5B</a></th>
+                <th><a href="https://github.com/hpcaitech/Open-Sora" target="_blank" class="model-link">Opensora<br>V2</a></th>
+                <th><a href="https://github.com/Tencent/HunyuanVideo" target="_blank" class="model-link">Hunyuan<br>Video</a></th>
+                <th><a href="https://www.stepfun.com/" target="_blank" class="model-link">Step<br>Video</a></th>
+                <th>Avg. (↑)</th>
+                <th>Rank</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Random</td><td>50</td><td>50</td><td>50</td><td>50</td><td>50</td><td>50</td><td>50</td><td>50</td><td>12</td></tr>
+              <tr><td>Human</td><td>81.25</td><td>91.25</td><td>86.25</td><td>91.25</td><td>91.25</td><td>91.25</td><td>91.25</td><td>89.11</td><td class="rank-1">1</td></tr>
+              <tr class="group-header"><td colspan="10">Open-source Models</td></tr>
+              <tr><td><a href="https://github.com/QwenLM/Qwen2.5-VL" target="_blank" class="model-link">Qwen3-VL-8B</a>*</td><td>57.79</td><td>87.69</td><td>55.56</td><td>56.28</td><td>51.50</td><td>54.50</td><td>83.84</td><td>63.88</td><td>4</td></tr>
+              <tr><td><a href="https://github.com/QwenLM/Qwen2.5-VL" target="_blank" class="model-link">Qwen3-VL-30B</a></td><td>51.08</td><td>51.35</td><td>49.44</td><td>54.74</td><td>47.09</td><td>49.74</td><td>81.68</td><td>54.87</td><td>11</td></tr>
+              <tr><td><a href="https://github.com/QwenLM/Qwen2.5-VL" target="_blank" class="model-link">Qwen2.5-VL-72B</a></td><td>49.50</td><td>71.07</td><td>51.05</td><td>51.00</td><td>54.50</td><td>53.50</td><td>81.50</td><td>58.87</td><td>9</td></tr>
+              <tr><td><a href="https://github.com/QwenLM/Qwen2.5-VL" target="_blank" class="model-link">Qwen3-VL-235B</a></td><td>56.53</td><td>80.75</td><td>53.89</td><td>52.66</td><td>50.79</td><td>48.19</td><td>90.53</td><td>61.91</td><td>7</td></tr>
+              <tr><td><a href="https://github.com/THUDM/GLM-4" target="_blank" class="model-link">GLM-4.5V</a></td><td>54.64</td><td>63.75</td><td>54.90</td><td>57.59</td><td>66.24</td><td>61.01</td><td>87.13</td><td>63.61</td><td>5</td></tr>
+              <tr class="group-header"><td colspan="10">Proprietary Models</td></tr>
+              <tr><td><a href="https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/" target="_blank" class="model-link">GPT-4o-mini</a></td><td>52.50</td><td>51.78</td><td>53.68</td><td>50.50</td><td>53.00</td><td>50.50</td><td>89.00</td><td>57.28</td><td>10</td></tr>
+              <tr><td><a href="https://openai.com/gpt-4o" target="_blank" class="model-link">GPT-4o</a></td><td>51.50</td><td>51.27</td><td>55.26</td><td>55.50</td><td>56.50</td><td>56.50</td><td>95.00</td><td>60.22</td><td>8</td></tr>
+              <tr><td>GPT-5 (Preview)</td><td>54.55</td><td>95.43</td><td>55.26</td><td>57.50</td><td>56.78</td><td>56.50</td><td>93.97</td><td>67.14</td><td class="rank-3">3</td></tr>
+              <tr><td><a href="https://deepmind.google/technologies/gemini/flash/" target="_blank" class="model-link">Gemini-2.5-Flash</a></td><td>47.72</td><td>87.56</td><td>53.55</td><td>55.44</td><td>55.15</td><td>53.06</td><td>78.63</td><td>61.59</td><td>6</td></tr>
+              <tr class="highlight-row"><td style="padding-left: 20px; font-style: italic;">+ Audio</td><td>52.55</td><td>93.65</td><td>53.55</td><td>55.44</td><td>55.15</td><td>53.06</td><td>78.63</td><td>63.15</td><td>6</td></tr>
+              <tr><td><a href="https://deepmind.google/technologies/gemini/pro/" target="_blank" class="model-link">Gemini-2.5-Pro</a></td><td>51.56</td><td>84.49</td><td>59.09</td><td>60.21</td><td>62.30</td><td>65.76</td><td>87.98</td><td>67.34</td><td class="rank-2">2</td></tr>
+              <tr class="highlight-row"><td style="padding-left: 20px; font-style: italic;">+ Audio</td><td>56.00</td><td>87.72</td><td>59.09</td><td>60.21</td><td>62.30</td><td>65.76</td><td>87.98</td><td>68.44</td><td class="rank-2">2</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="is-size-7 has-text-grey" style="margin-top: 10px;">
+          * Note: Qwen3 links direct to the Qwen organization as specific Qwen3 repositories may be internal or under the Qwen2.5 umbrella currently.
+        </p>
+      </div>
+
+      <!-- TABLE 2 -->
+      <div class="table-card">
+        <div class="table-caption">
+          <span class="table-caption-title">Table 2. Performance comparison on Video Reality Test of video generation models on different generate types.</span>
+          <span class="table-caption-desc">
+            <strong>Image</strong> means the start-frame image and <strong>Text</strong> means the text description. Lower Avg. score indicates better fooling capability.
+          </span>
+        </div>
+
+        <div class="table-responsive">
+          <table class="academic-table">
+            <thead>
+              <tr>
+                <th>Inputs</th>
+                <th>Image</th>
+                <th>Text</th>
+                <th>GPT-4o<br>-mini</th>
+                <th>GPT-4o</th>
+                <th>Gemini-2.5<br>-Flash</th>
+                <th>Gemini-2.5<br>-Pro</th>
+                <th>Avg. (↓)</th>
+                <th>Rank</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="group-header"><td colspan="9"><a href="https://github.com/hpcaitech/Open-Sora" target="_blank" class="model-link">Opensora-V2</a></td></tr>
+              <tr><td>Text2Vid</td><td><span class="icon-cross">✘</span></td><td><span class="icon-check">✔</span></td><td>14.00</td><td>10.00</td><td>28.72</td><td>39.18</td><td>22.98</td><td>8</td></tr>
+              <tr><td>ImgText2Vid</td><td><span class="icon-cross">✘</span></td><td><span class="icon-check">✔</span></td><td>12.00</td><td>15.00</td><td>30.21</td><td>35.16</td><td>23.59</td><td>9</td></tr>
+              <tr><td>Text2Img2Vid</td><td><span class="icon-check">✔</span></td><td><span class="icon-check">✔</span></td><td>14.00</td><td>18.00</td><td>45.36</td><td>43.75</td><td>30.28</td><td>10</td></tr>
+              
+              <tr class="group-header"><td colspan="9"><a href="https://huggingface.co/Wan-AI" target="_blank" class="model-link">Wan2.2</a></td></tr>
+              <tr><td>Text2Vid-A14B</td><td><span class="icon-cross">✘</span></td><td><span class="icon-check">✔</span></td><td>12.00</td><td>13.00</td><td>24.47</td><td>21.74</td><td>17.80</td><td>5</td></tr>
+              <tr><td>ImgText2Vid-A14B</td><td><span class="icon-check">✔</span></td><td><span class="icon-check">✔</span></td><td>8.89</td><td>7.78</td><td>23.53</td><td>26.19</td><td>16.10</td><td class="rank-3">3</td></tr>
+              <tr><td>ImgText2Vid-5B</td><td><span class="icon-check">✔</span></td><td><span class="icon-check">✔</span></td><td>7.00</td><td>13.00</td><td>30.53</td><td>33.33</td><td>20.97</td><td>6</td></tr>
+
+              <tr class="group-header"><td colspan="9"><a href="https://github.com/Tencent/HunyuanVideo" target="_blank" class="model-link">HunyuanVideo</a></td></tr>
+              <tr><td>Text2Vid</td><td><span class="icon-cross">✘</span></td><td><span class="icon-check">✔</span></td><td>8.00</td><td>7.00</td><td>25.51</td><td>18.56</td><td>14.77</td><td class="rank-2">2</td></tr>
+              <tr><td>ImgText2Vid</td><td><span class="icon-check">✔</span></td><td><span class="icon-check">✔</span></td><td>7.00</td><td>15.00</td><td>26.53</td><td>42.39</td><td>22.73</td><td>7</td></tr>
+
+              <tr class="group-header"><td colspan="9"><a href="https://openai.com/sora" target="_blank" class="model-link">Sora2</a></td></tr>
+              <tr><td>Text2Vid</td><td><span class="icon-cross">✘</span></td><td><span class="icon-check">✔</span></td><td>16.00</td><td>9.00</td><td>100.00</td><td>97.89</td><td>55.72</td><td>12</td></tr>
+              <tr><td>ImgText2Vid</td><td><span class="icon-check">✔</span></td><td><span class="icon-check">✔</span></td><td>8.25</td><td>3.09</td><td>95.79</td><td>79.17</td><td>46.58</td><td>11</td></tr>
+              <tr class="highlight-row"><td style="text-align: left; padding-left: 20px; font-style: italic;">+ Audio</td><td><span class="icon-check">✔</span></td><td><span class="icon-check">✔</span></td><td>8.25</td><td>3.09</td><td>97.89</td><td>88.66</td><td>49.47<span class="diff-val"> +2.89</span></td><td>11</td></tr>
+              <tr><td style="text-align: left; padding-left: 20px;">- Watermark</td><td><span class="icon-check">✔</span></td><td><span class="icon-check">✔</span></td><td>8.25</td><td>6.19</td><td>25.00</td><td>24.74</td><td>16.55</td><td>4</td></tr>
+
+              <tr class="group-header"><td colspan="9"><a href="https://www.stepfun.com/" target="_blank" class="model-link">StepVideo</a></td></tr>
+              <tr><td>Text2Vid</td><td><span class="icon-cross">✘</span></td><td><span class="icon-check">✔</span></td><td>84.00</td><td>92.00</td><td>73.68</td><td>86.81</td><td>83.62</td><td>13</td></tr>
+
+              <tr class="group-header"><td colspan="9"><a href="https://deepmind.google/technologies/veo/" target="_blank" class="model-link">Veo3.1-Fast</a></td></tr>
+              <tr><td>ImgText2Vid</td><td><span class="icon-check">✔</span></td><td><span class="icon-check">✔</span></td><td>11.00</td><td>5.00</td><td>16.16</td><td>17.00</td><td>12.54</td><td class="rank-1">1</td></tr>
+              <tr class="highlight-row"><td style="text-align: left; padding-left: 20px; font-style: italic;">+ Audio</td><td><span class="icon-check">✔</span></td><td><span class="icon-check">✔</span></td><td>11.00</td><td>5.00</td><td>19.20</td><td>25.00</td><td>15.05<span class="diff-val"> +2.51</span></td><td class="rank-1">1</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Experiment Results Section (Added ID for specific styling) -->
+  <section class="section" id="experiment-results">
+    <div class="container is-max-desktop">
+      <h2 class="title is-2" style="text-align: center;">Experiment Results</h2>
+      
+      <div class="card" style="margin-bottom: 1.5rem; border-radius: 8px;">
+        <header class="card-header"><p class="card-header-title">Q1-1. Are current VLMs reliable at distinguishing real and generated videos?</p></header>
+        <div class="card-content">
+          <div class="content">
+            Evaluation of 10 VLMs shows that proprietary models generally outperform open-source ones, with
+            <b>Gemini-2.5-pro</b> performing best and <b>GPT-5</b> next. Overall performance remains limited: <b>the top
+              score is only 68.44, far below humans at 89.11</b>. Most open-source models perform poorly, leaving
+            substantial room for improvement.
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom: 1.5rem; border-radius: 8px;">
+        <header class="card-header"><p class="card-header-title">Q1-2. Does adding audio improve VLM detection performance?</p></header>
+        <div class="card-content">
+          <div class="content">
+            Yes. Adding audio increases detection accuracy by roughly 5 points for the Gemini models. This is mainly
+            because current generated audio often misaligns with the video; for example, Sora2 produces human voices
+            rather than continuous ASMR sounds, making inconsistencies more detectable.
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom: 1.5rem; border-radius: 8px;">
+        <header class="card-header"><p class="card-header-title">Q2-1. Can current video generation models successfully fool VLMs?</p></header>
+        <div class="card-content">
+          <div class="content">
+            Yes. Generation models are highly effective at misleading VLMs. <b>Veo3.1-Fast</b> performs best, with only
+            <b>12.54% of its videos detected as fake</b>. Some open-source models (e.g., HunyuanVideoI2V, Wan2.2-A14B)
+            even outperform the closed-source Sora2, showing the performance gap between proprietary and open-source models is narrowing.
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom: 1.5rem; border-radius: 8px;">
+        <header class="card-header"><p class="card-header-title">Q2-2. What factors affect the realism of generated videos?</p></header>
+        <div class="card-content">
+          <div class="content">
+            Adding audio can increase the likelihood of videos being detected as fake (e.g., Veo3.1-Fast rises from
+            12.54% to 15.05%) due to audio-visual mismatches. Generation type (Image2Video, TextImage2Video) has limited
+            effect, but <b>model scale matters significantly</b>; larger models generally produce more realistic videos,
+            e.g., Wan2.2-A14B outperforms its 5B version.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Comparison Section -->
+  <section class="section" style="background-color: #f1f1f1;">
+    <div class="container is-max-desktop">
+      <h2 class="title is-2" style="text-align: center;">Real or Fake: Can You Tell the Difference?</h2>
+      
+      <div class="comparison-group">
+        <div class="group-title">Scene 1: Cloth Texture & Physics</div>
+        <div class="video-row">
+          <div class="simulation-item">
+            <video controls loop muted autoplay playsinline preload="auto" src="./static/videos/RealVSFake1/real.mp4"></video>
+            <p class="simulation-label label-real">Real</p>
+          </div>
+          <div class="simulation-item">
+            <video controls loop muted autoplay playsinline preload="auto" src="./static/videos/RealVSFake1/sora2.mp4"></video>
+            <p class="simulation-label">Sora-2</p>
+          </div>
+          <div class="simulation-item">
+            <video controls loop muted autoplay playsinline preload="auto" src="./static/videos/RealVSFake1/veo3.1-fast.mp4"></video>
+            <p class="simulation-label">Veo-3.1-fast</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="comparison-group">
+        <div class="group-title">Scene 2: Intricate Carving</div>
+        <div class="video-row">
+          <div class="simulation-item">
+            <video controls loop muted autoplay playsinline preload="auto" src="./static/videos/RealVSFake2/real.mp4"></video>
+            <p class="simulation-label label-real">Real</p>
+          </div>
+          <div class="simulation-item">
+            <video controls loop muted autoplay playsinline preload="auto" src="./static/videos/RealVSFake2/sora2.mp4"></video>
+            <p class="simulation-label">Sora-2</p>
+          </div>
+          <div class="simulation-item">
+            <video controls loop muted autoplay playsinline preload="auto" src="./static/videos/RealVSFake2/veo3.1-fast.mp4"></video>
+            <p class="simulation-label">Veo-3.1-fast</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="comparison-group">
+        <div class="group-title">Scene 3: Material Deformation (Wood)</div>
+        <div class="video-row">
+          <div class="simulation-item">
+            <video controls loop muted autoplay playsinline preload="auto" src="./static/videos/RealVSFake3/real.mp4"></video>
+            <p class="simulation-label label-real">Real</p>
+          </div>
+          <div class="simulation-item">
+            <video controls loop muted autoplay playsinline preload="auto" src="./static/videos/RealVSFake3/sora2.mp4"></video>
+            <p class="simulation-label">Sora-2</p>
+          </div>
+          <div class="simulation-item">
+            <video controls loop muted autoplay playsinline preload="auto" src="./static/videos/RealVSFake3/veo3.1-fast.mp4"></video>
+            <p class="simulation-label">Veo-3.1-fast</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="comparison-group group-large">
+        <div class="group-title">Scene 4: Fine Interactions (Tomato Slicing)</div>
+        <div class="video-row">
+          <div class="simulation-item">
+            <video controls loop muted autoplay playsinline preload="auto" src="./static/videos/RealVSFake4/real.mp4"></video>
+            <p class="simulation-label label-real">Real</p>
+          </div>
+          <div class="simulation-item">
+            <video controls loop muted autoplay playsinline preload="auto" src="./static/videos/RealVSFake4/sora2.mp4"></video>
+            <p class="simulation-label">Sora-2</p>
+          </div>
+          <div class="simulation-item">
+            <video controls loop muted autoplay playsinline preload="auto" src="./static/videos/RealVSFake4/opensora.mp4"></video>
+            <p class="simulation-label">Open Sora</p>
+          </div>
+          <div class="simulation-item">
+            <video controls loop muted autoplay playsinline preload="auto" src="./static/videos/RealVSFake4/kling.mp4"></video>
+            <p class="simulation-label">Kling</p>
+          </div>
+          <div class="simulation-item">
+            <video controls loop muted autoplay playsinline preload="auto" src="./static/videos/RealVSFake4/wan-a14b.mp4"></video>
+            <p class="simulation-label">Wan-A14B</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BibTeX Section -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title"><a id="bibtex">BibTeX</a></h2>
+      <pre><code>@misc{luo2025vreasonbench,
+      title={Video Reality Test: Can AI-Generated ASMR Videos fool VLMs and Human?}, 
+      author={Jiaqi Wang and Weijia Wu and Yi Zhan and Rui Zhao and Ming Hu and James Cheng and Wei Liu and Philip Torr and Kevin Qinghong Lin},
+      year={2025},
+      eprint={2511.16668},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/xxxxxx}, 
+}</code></pre>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            This website is licensed under a <a rel="license"
+              href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            Website adapted from the following <a href="https://nerfies.github.io">source code</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="juxtapose/js/juxtapose.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>
