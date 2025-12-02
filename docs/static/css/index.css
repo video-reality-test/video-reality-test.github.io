@@ -300,8 +300,32 @@ body {
   flex-direction: column;
 }
 
-/* 卡片顶部的黑色标题栏 */
+/* --- Q&A 卡片头部样式优化 --- */
+
+/* 1. 把背景改成深色，这样白色字才能看清 */
 .card-header {
+  background-color: #1e293b !important; /* 深蓝灰色 (Slate 800) */
+  /* 如果喜欢更亮的蓝色，可以用 background-color: #2563eb; */
+  border-bottom: none !important; /* 去掉底部分割线，更简洁 */
+}
+
+/* 2. 调整标题文字：白色、变大 */
+.card-header-title {
+  color: #ffffff !important;      /* 纯白文字 */
+  font-size: 1.3rem !important;   /* 字体加大 (原版约为 1rem) */
+  font-weight: 700 !important;    /* 加粗 */
+  padding: 1.2rem 1.5rem !important; /* 增加一点内边距，让文字呼吸感更好 */
+  line-height: 1.4;
+}
+
+/* (可选) 让卡片悬停时，头部稍微变亮一点点，增加交互感 */
+.card:hover .card-header {
+  background-color: #334155 !important; /* 稍微亮一点的深灰 */
+  transition: background-color 0.3s ease;
+}
+
+/* 卡片顶部的黑色标题栏 */
+.card-header-example {
   background-color: #000;    /* 黑色背景 */
   color: #fff;
   padding: 8px 12px;

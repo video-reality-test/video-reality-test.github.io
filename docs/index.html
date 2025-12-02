@@ -278,7 +278,7 @@
       <!-- 顶部标题 -->
       <div class="tldr-header">
         <h2 class="tldr-title">📖 Qualitative Gallery</h2>
-        <p class="tldr-desc">Swipe right to explore video generation results across different models.</p>
+        <!-- <p class="tldr-desc">Swipe right to explore video generation results across different models.</p> -->
       </div>
   
       <!-- 滚动区域 -->
@@ -286,7 +286,7 @@
   
         <!-- 卡片 1: Real Video -->
         <div class="video-card">
-          <div class="card-header">📹 Real Footage</div>
+          <div class="card-header-example">📹 Real Footage</div>
           <video controls playsinline muted loop autoplay>
             <source src="./static/videos/example/real.mp4" type="video/mp4">
           </video>
@@ -294,7 +294,7 @@
   
         <!-- 卡片 2: Sora -->
         <div class="video-card">
-          <div class="card-header">🚀 Sora</div>
+          <div class="card-header-example">🚀 Sora</div>
           <video controls playsinline muted loop autoplay>
             <source src="./static/videos/example/sora2.mp4" type="video/mp4">
           </video>
@@ -302,7 +302,7 @@
   
         <!-- 卡片 3: Veo -->
         <div class="video-card">
-          <div class="card-header">🤖 Veo 3.1</div>
+          <div class="card-header-example">🤖 Veo 3.1</div>
           <video controls playsinline muted loop autoplay>
             <source src="./static/videos/example/veo3.1.mp4" type="video/mp4">
           </video>
@@ -310,7 +310,7 @@
   
         <!-- 卡片 4: Hunyuan -->
         <div class="video-card">
-          <div class="card-header">🐉 Hunyuan I2V</div>
+          <div class="card-header-example">🐉 Hunyuan I2V</div>
           <video controls playsinline muted loop autoplay>
             <source src="./static/videos/example/hunyuan_i2v.mp4" type="video/mp4">
           </video>
@@ -318,7 +318,7 @@
   
         <!-- 卡片 5: Wan -->
         <div class="video-card">
-          <div class="card-header">🪐 Wan Video</div>
+          <div class="card-header-example">🪐 Wan Video</div>
           <video controls playsinline muted loop autoplay>
             <source src="./static/videos/example/wan_086.mp4" type="video/mp4">
           </video>
@@ -326,7 +326,7 @@
   
         <!-- 卡片 6: OpenSora -->
         <div class="video-card">
-          <div class="card-header">✨ OpenSora</div>
+          <div class="card-header-example">✨ OpenSora</div>
           <video controls playsinline muted loop autoplay>
             <source src="./static/videos/example/opensora_newprompt_100_0085.mp4" type="video/mp4">
           </video>
@@ -534,22 +534,24 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td>Random</td><td>50</td><td>50</td><td>50</td><td>50</td><td>50</td><td>50</td><td>50</td><td>50</td><td>12</td></tr>
+              <tr><td>Random</td><td>50</td><td>50</td><td>50</td><td>50</td><td>50</td><td>50</td><td>50</td><td>50</td><td>13</td></tr>
               <tr><td>Human</td><td>81.25</td><td>91.25</td><td>86.25</td><td>91.25</td><td>91.25</td><td>91.25</td><td>91.25</td><td>89.11</td><td class="rank-1">1</td></tr>
               <tr class="group-header"><td colspan="10">Open-source Models</td></tr>
-              <tr><td><a href="https://github.com/QwenLM/Qwen2.5-VL" target="_blank" class="model-link">Qwen3-VL-8B</a>*</td><td>57.79</td><td>87.69</td><td>55.56</td><td>56.28</td><td>51.50</td><td>54.50</td><td>83.84</td><td>63.88</td><td>4</td></tr>
-              <tr><td><a href="https://github.com/QwenLM/Qwen2.5-VL" target="_blank" class="model-link">Qwen3-VL-30B</a></td><td>51.08</td><td>51.35</td><td>49.44</td><td>54.74</td><td>47.09</td><td>49.74</td><td>81.68</td><td>54.87</td><td>11</td></tr>
-              <tr><td><a href="https://github.com/QwenLM/Qwen2.5-VL" target="_blank" class="model-link">Qwen2.5-VL-72B</a></td><td>49.50</td><td>71.07</td><td>51.05</td><td>51.00</td><td>54.50</td><td>53.50</td><td>81.50</td><td>58.87</td><td>9</td></tr>
-              <tr><td><a href="https://github.com/QwenLM/Qwen2.5-VL" target="_blank" class="model-link">Qwen3-VL-235B</a></td><td>56.53</td><td>80.75</td><td>53.89</td><td>52.66</td><td>50.79</td><td>48.19</td><td>90.53</td><td>61.91</td><td>7</td></tr>
-              <tr><td><a href="https://github.com/THUDM/GLM-4" target="_blank" class="model-link">GLM-4.5V</a></td><td>54.64</td><td>63.75</td><td>54.90</td><td>57.59</td><td>66.24</td><td>61.01</td><td>87.13</td><td>63.61</td><td>5</td></tr>
+              <tr><td><a href="https://github.com/QwenLM/Qwen2.5-VL" target="_blank" class="model-link">Qwen3-VL-8B</a>*</td><td>57.79</td><td>87.69</td><td>55.56</td><td>56.28</td><td>51.50</td><td>54.50</td><td>83.84</td><td>63.88</td><td>5</td></tr>
+              <tr><td><a href="https://github.com/QwenLM/Qwen2.5-VL" target="_blank" class="model-link">Qwen3-VL-30B-A3B</a></td><td>51.08</td><td>51.35</td><td>49.44</td><td>54.74</td><td>47.09</td><td>49.74</td><td>81.68</td><td>54.87</td><td>12</td></tr>
+              <tr><td><a href="https://github.com/QwenLM/Qwen2.5-VL" target="_blank" class="model-link">Qwen2.5-VL-72B</a></td><td>49.50</td><td>71.07</td><td>51.05</td><td>51.00</td><td>54.50</td><td>53.50</td><td>81.50</td><td>58.87</td><td>10</td></tr>
+              <tr><td><a href="https://github.com/QwenLM/Qwen2.5-VL" target="_blank" class="model-link">Qwen3-VL-235B-A22B</a></td><td>56.53</td><td>80.75</td><td>53.89</td><td>52.66</td><td>50.79</td><td>48.19</td><td>90.53</td><td>61.91</td><td>8</td></tr>
+              <tr><td><a href="https://github.com/THUDM/GLM-4" target="_blank" class="model-link">GLM-4.5V</a></td><td>54.64</td><td>63.75</td><td>54.90</td><td>57.59</td><td>66.24</td><td>61.01</td><td>87.13</td><td>63.61</td><td>6</td></tr>
               <tr class="group-header"><td colspan="10">Proprietary Models</td></tr>
-              <tr><td><a href="https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/" target="_blank" class="model-link">GPT-4o-mini</a></td><td>52.50</td><td>51.78</td><td>53.68</td><td>50.50</td><td>53.00</td><td>50.50</td><td>89.00</td><td>57.28</td><td>10</td></tr>
-              <tr><td><a href="https://openai.com/gpt-4o" target="_blank" class="model-link">GPT-4o</a></td><td>51.50</td><td>51.27</td><td>55.26</td><td>55.50</td><td>56.50</td><td>56.50</td><td>95.00</td><td>60.22</td><td>8</td></tr>
-              <tr><td>GPT-5 (Preview)</td><td>54.55</td><td>95.43</td><td>55.26</td><td>57.50</td><td>56.78</td><td>56.50</td><td>93.97</td><td>67.14</td><td class="rank-3">3</td></tr>
-              <tr><td><a href="https://deepmind.google/technologies/gemini/flash/" target="_blank" class="model-link">Gemini-2.5-Flash</a></td><td>47.72</td><td>87.56</td><td>53.55</td><td>55.44</td><td>55.15</td><td>53.06</td><td>78.63</td><td>61.59</td><td>6</td></tr>
-              <tr class="highlight-row"><td style="padding-left: 20px; font-style: italic;">+ Audio</td><td>52.55</td><td>93.65</td><td>53.55</td><td>55.44</td><td>55.15</td><td>53.06</td><td>78.63</td><td>63.15</td><td>6</td></tr>
-              <tr><td><a href="https://deepmind.google/technologies/gemini/pro/" target="_blank" class="model-link">Gemini-2.5-Pro</a></td><td>51.56</td><td>84.49</td><td>59.09</td><td>60.21</td><td>62.30</td><td>65.76</td><td>87.98</td><td>67.34</td><td class="rank-2">2</td></tr>
-              <tr class="highlight-row"><td style="padding-left: 20px; font-style: italic;">+ Audio</td><td>56.00</td><td>87.72</td><td>59.09</td><td>60.21</td><td>62.30</td><td>65.76</td><td>87.98</td><td>68.44</td><td class="rank-2">2</td></tr>
+              <tr><td><a href="https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/" target="_blank" class="model-link">GPT-4o-mini</a></td><td>52.50</td><td>51.78</td><td>53.68</td><td>50.50</td><td>53.00</td><td>50.50</td><td>89.00</td><td>57.28</td><td>11</td></tr>
+              <tr><td><a href="https://openai.com/gpt-4o" target="_blank" class="model-link">GPT-4o</a></td><td>51.50</td><td>51.27</td><td>55.26</td><td>55.50</td><td>56.50</td><td>56.50</td><td>95.00</td><td>60.22</td><td>9</td></tr>
+              <tr><td>GPT-5 (Preview)</td><td>54.55</td><td>95.43</td><td>55.26</td><td>57.50</td><td>56.78</td><td>56.50</td><td>93.97</td><td>67.14</td><td>4</td></tr>
+              <tr><td><a href="https://deepmind.google/technologies/gemini/flash/" target="_blank" class="model-link">Gemini-2.5-Flash</a></td><td>47.72</td><td>87.56</td><td>53.55</td><td>55.44</td><td>55.15</td><td>53.06</td><td>78.63</td><td>61.59</td><td>7</td></tr>
+              <tr class="highlight-row"><td style="padding-left: 20px; font-style: italic;">+ Audio</td><td>52.55</td><td>93.65</td><td>53.55</td><td>55.44</td><td>55.15</td><td>53.06</td><td>78.63</td><td>63.15</td><td>8</td></tr>
+              <tr><td><a href="https://deepmind.google/technologies/gemini/pro/" target="_blank" class="model-link">Gemini-2.5-Pro</a></td><td>51.56</td><td>84.49</td><td>59.09</td><td>60.21</td><td>62.30</td><td>65.76</td><td>87.98</td><td>67.34</td><td class="rank-3">3</td></tr>
+              <tr class="highlight-row"><td style="padding-left: 20px; font-style: italic;">+ Audio</td><td>56.00</td><td>87.72</td><td>59.09</td><td>60.21</td><td>62.30</td><td>65.76</td><td>87.98</td><td>68.44</td><td class="rank-3">3</td></tr>
+              <!-- 新增的 Gemini-3 行 -->
+              <tr><td><a href="https://deepmind.google/technologies/gemini/" target="_blank" class="model-link">Gemini-3-Pro-Preview</a></td><td>77.89</td><td>89.90</td><td>57.67</td><td>73.87</td><td>65.83</td><td>80.90</td><td>87.94</td><td>76.27</td><td class="rank-2">2</td></tr>
             </tbody>
           </table>
         </div>
@@ -558,6 +560,7 @@
         </p>
       </div>
 
+      
       <!-- TABLE 2 -->
       <div class="table-card">
         <div class="table-caption">
