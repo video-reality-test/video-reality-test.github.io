@@ -175,20 +175,39 @@
             </h1>
 
             <div class="is-size-5 publication-authors">
-              <span class="author-block"><span class="author-name">Jiaqi Wang</span><sup>1*</sup>,</span>
-              <span class="author-block"><span class="author-name">Weijia Wu</span><sup>2*</sup>,</span>
-              <span class="author-block"><span class="author-name">Yi Zhan</span><sup>1</sup>,</span>
-              <span class="author-block"><span class="author-name">Rui Zhao</span><sup>2</sup>,</span>
-              <span class="author-block"><span class="author-name">Ming Hu</span><sup>1</sup>,</span>
-              <span class="author-block"><span class="author-name">James Cheng</span><sup>1</sup>,</span>
-              <span class="author-block"><span class="author-name">Wei Liu</span><sup>3</sup>,</span>
-              <span class="author-block"><span class="author-name">Philip Torr</span><sup>4</sup>,</span>
-              <span class="author-block"><span class="author-name">Kevin Qinghong Lin</span><sup>4†</sup></span>
+              <span class="author-block">
+                <a class="author-name" href="https://kokolerk.github.io/" target="_blank">Jiaqi Wang</a><sup>1*</sup>,
+              </span>
+              <span class="author-block">
+                <a class="author-name" href="https://weijiawu.github.io/" target="_blank">Weijia Wu</a><sup>2*</sup>,
+              </span>
+              <span class="author-block">
+                <a class="author-name" href="https://scholar.google.com/citations?user=Enhky14AAAAJ&hl=zh-CN&authuser=1" target="_blank">Yi Zhan</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a class="author-name" href="https://scholar.google.com.hk/citations?user=wYs7vogAAAAJ " target="_blank">Rui Zhao</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a class="author-name" href="https://scholar.google.com/citations?user=a3EydJMAAAAJ&hl=en" target="_blank">Ming Hu</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a class="author-name" href="https://www.cse.cuhk.edu.hk/~jcheng/" target="_blank">James Cheng</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a class="author-name" href="https://scholar.google.com/citations?user=AjxoEpIAAAAJ&hl=en" target="_blank">Wei Liu</a><sup>3</sup>,
+              </span>
+              <span class="author-block">
+                <a class="author-name" href="https://scholar.google.com/citations?user=kPxa2w0AAAAJ&hl=en" target="_blank">Philip Torr</a><sup>4</sup>,
+              </span>
+              <span class="author-block">
+                <a class="author-name" href="https://scholar.google.com/citations?user=EvbGjlUAAAAJ&hl=zh-CN" target="_blank">Kevin Qinghong Lin</a><sup>4†</sup>
+              </span>
             </div>
+            
 
             <div class="is-size-5 publication-authors">
-              <span class="author-block"><sup>1</sup>The Chinese University of Hong Kong (CUHK)</span>
-              <span class="author-block"><sup>2</sup>National University of Singapore (NUS)</span>
+              <span class="author-block"><sup>1</sup>The Chinese University of Hong Kong</span>
+              <span class="author-block"><sup>2</sup>National University of Singapore</span>
               <span class="author-block"><sup>3</sup>Video Rebirth</span>
               <span class="author-block"><sup>4</sup>University of Oxford</span>
             </div>
@@ -249,6 +268,79 @@
       </div>
     </div>
   </section>
+
+
+  <div class="container is-max-desktop">
+  
+    <!-- 外层蓝色大框 -->
+    <div class="tldr-container">
+      
+      <!-- 顶部标题 -->
+      <div class="tldr-header">
+        <h2 class="tldr-title">📖 Qualitative Gallery</h2>
+        <p class="tldr-desc">Swipe right to explore video generation results across different models.</p>
+      </div>
+  
+      <!-- 滚动区域 -->
+      <div class="video-scroll-row">
+  
+        <!-- 卡片 1: Real Video -->
+        <div class="video-card">
+          <div class="card-header">📹 Real Footage</div>
+          <video controls playsinline muted loop autoplay>
+            <source src="./static/videos/example/real.mp4" type="video/mp4">
+          </video>
+        </div>
+  
+        <!-- 卡片 2: Sora -->
+        <div class="video-card">
+          <div class="card-header">🚀 Sora</div>
+          <video controls playsinline muted loop autoplay>
+            <source src="./static/videos/example/sora2.mp4" type="video/mp4">
+          </video>
+        </div>
+  
+        <!-- 卡片 3: Veo -->
+        <div class="video-card">
+          <div class="card-header">🤖 Veo 3.1</div>
+          <video controls playsinline muted loop autoplay>
+            <source src="./static/videos/example/veo3.1.mp4" type="video/mp4">
+          </video>
+        </div>
+  
+        <!-- 卡片 4: Hunyuan -->
+        <div class="video-card">
+          <div class="card-header">🐉 Hunyuan I2V</div>
+          <video controls playsinline muted loop autoplay>
+            <source src="./static/videos/example/hunyuan_i2v.mp4" type="video/mp4">
+          </video>
+        </div>
+  
+        <!-- 卡片 5: Wan -->
+        <div class="video-card">
+          <div class="card-header">🪐 Wan Video</div>
+          <video controls playsinline muted loop autoplay>
+            <source src="./static/videos/example/wan_086.mp4" type="video/mp4">
+          </video>
+        </div>
+  
+        <!-- 卡片 6: OpenSora -->
+        <div class="video-card">
+          <div class="card-header">✨ OpenSora</div>
+          <video controls playsinline muted loop autoplay>
+            <source src="./static/videos/example/opensora_newprompt_100_0085.mp4" type="video/mp4">
+          </video>
+        </div>
+  
+      </div>
+  
+      <!-- 底部注释 -->
+      <div class="tldr-footer">
+        Videos are set to fixed height for better alignment. Swipe to view more.
+      </div>
+  
+    </div>
+  </div>
 
   <!-- Abstract Section -->
   <section class="section">

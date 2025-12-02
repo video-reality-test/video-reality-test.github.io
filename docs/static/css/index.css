@@ -185,3 +185,148 @@ body {
   width: 0px;
   height: 0px;
 }
+
+
+/* 滚动区域容器 */
+.video-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;               /* 盒子之间的间距 */
+  padding: 20px 0;         /* 上下留白 */
+  width: 100%;
+  
+  /* 隐藏滚动条 */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.video-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* 单个视频+标题的包裹容器 */
+.video-wrapper {
+  display: flex;
+  flex-direction: column;  /* 让视频和文字垂直排列 */
+  align-items: center;     /* 文字居中对齐 */
+  flex-shrink: 0;          /* 防止容器被挤压 */
+}
+
+/* 视频样式 */
+.video-item {
+  height: 300px;           /* 固定高度，保证对齐 */
+  width: auto;             /* 宽度自适应 */
+  border-radius: 8px;
+  background-color: #000;
+  margin-bottom: 10px;     /* 视频和下方文字的间距 */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 可选：加点阴影更好看 */
+}
+
+/* 小标题样式 */
+.video-caption {
+  font-size: 1.1rem;       /* 字体大小 */
+  font-weight: 600;        /* 字体加粗 */
+  color: #363636;          /* 字体颜色 */
+}
+
+/* 总标题样式 */
+.section-title {
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* --- 整体容器风格 (仿照参考图的蓝色外框) --- */
+.tldr-container {
+  background-color: #ecf5ff;  /* 淡蓝色背景 */
+  border: 1px solid #d0e6ff;  /* 稍微深一点的边框 */
+  border-radius: 20px;        /* 大圆角 */
+  padding: 30px;              /* 内边距 */
+  box-shadow: 0 10px 25px rgba(0, 70, 150, 0.08); /* 柔和的蓝色系投影 */
+  margin: 20px auto;
+  max-width: 100%;
+}
+
+/* --- 顶部大标题 --- */
+.tldr-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.tldr-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #0f172a; /* 深色字体 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.tldr-desc {
+  font-size: 1.1rem;
+  color: #475569;
+  margin-top: 5px;
+}
+
+/* --- 滚动区域 --- */
+.video-scroll-row {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 15px; /* 给滚动条留点位置 */
+  
+  /* 隐藏滚动条样式 */
+  scrollbar-width: thin; 
+  scrollbar-color: #cbd5e1 transparent;
+}
+/* Chrome/Safari 隐藏滚动条 */
+.video-scroll-row::-webkit-scrollbar {
+  height: 6px;
+}
+.video-scroll-row::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 10px;
+}
+
+/* --- 单个视频卡片 (仿照图中的黑头卡片) --- */
+.video-card {
+  flex-shrink: 0;            /* 防止压缩 */
+  background: #fff;
+  border-radius: 12px;       /* 卡片圆角 */
+  overflow: hidden;          /* 内容溢出隐藏，保证圆角效果 */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 卡片顶部的黑色标题栏 */
+.card-header {
+  background-color: #000;    /* 黑色背景 */
+  color: #fff;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* 视频本身 */
+.video-card video {
+  height: 280px;            /* 固定高度，非常重要 */
+  width: auto;              /* 宽度自适应 */
+  display: block;           /* 消除底部空隙 */
+  object-fit: contain;      /* 保持比例 */
+  background-color: #000;   /* 视频加载前的背景 */
+}
+
+/* --- 底部说明文字 --- */
+.tldr-footer {
+  text-align: center;
+  margin-top: 20px;
+  color: #64748b;
+  font-size: 0.9rem;
+}
