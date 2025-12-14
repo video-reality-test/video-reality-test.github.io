@@ -339,3 +339,328 @@ body {
   color: #64748b;
   font-size: 0.9rem;
 }
+
+
+.tldr-container {
+  background-color: #eef6ff; /* 对应截图的浅蓝背景 */
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.tldr-title {
+  font-size: 2rem;
+  color: #0f172a;
+  margin-bottom: 1.5rem;
+}
+
+/* 核心滚动区域包装器 */
+.scroller-wrapper {
+  position: relative; /* 关键：为绝对定位的按钮提供参考 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px; /* 防止视频贴边 */
+}
+
+/* 视频滚动行 */
+.video-scroll-row {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px; /* 卡片之间的间距 */
+  scroll-behavior: smooth;
+  padding: 10px 5px; /* 给阴影留出空间 */
+  width: 100%;
+  
+  /* 隐藏默认滚动条 */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+}
+.video-scroll-row::-webkit-scrollbar { 
+  display: none; /* Chrome/Safari/Webkit */
+}
+
+/* 视频卡片样式 */
+.video-card {
+  flex: 0 0 auto; /* 防止被压缩 */
+  width: 280px;   /* 固定宽度，你可以根据需要调整 */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  background: #fff;
+  transition: transform 0.2s;
+}
+
+.video-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.video-card video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* 美化按钮样式 */
+.scroll-btn {
+  position: absolute; /* 绝对定位，悬浮在内容上 */
+  top: 50%;
+  transform: translateY(-50%); /* 垂直居中 */
+  z-index: 10;
+  
+  width: 48px;
+  height: 48px;
+  border-radius: 50%; /* 圆形 */
+  border: none;
+  background-color: rgba(255, 255, 255, 0.9); /* 半透明白色背景 */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* 漂亮的阴影 */
+  cursor: pointer;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  font-size: 24px;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+/* 按钮位置 */
+.scroll-btn.left {
+  left: 10px; /* 距离左侧的距离 */
+}
+
+.scroll-btn.right {
+  right: 10px; /* 距离右侧的距离 */
+}
+
+/* 按钮 Hover 效果 */
+.scroll-btn:hover {
+  background-color: #ffffff;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  transform: translateY(-50%) scale(1.1); /* 保持居中的同时放大 */
+  color: #000;
+}
+
+.scroll-btn:active {
+  transform: translateY(-50%) scale(0.95); /* 点击时的微缩效果 */
+}
+
+.tldr-footer {
+  margin-top: 1.5rem;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+/* 新增：视频数字标签 */
+.video-label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 5;
+  width: 32px;
+  height: 32px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1rem;
+  pointer-events: none; /* 让鼠标可以穿透标签点击视频 */
+}
+
+/* 大框 */
+.tldr-container {
+  background-color: #eef6ff;
+  border: 1px solid #dbdbdb;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+/* 顶部标题 */
+.tldr-header {
+  margin-bottom: 24px;
+}
+.tldr-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1c1e21;
+}
+
+/* 滚动区域的包装器，用于定位箭头 */
+.scroller-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* 滚动区域 */
+.video-scroll-row {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 10px 0;
+  flex-grow: 1;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.video-scroll-row::-webkit-scrollbar {
+  display: none;
+}
+
+/* 视频卡片 */
+.video-card {
+  flex: 0 0 280px;
+  width: 280px;
+  background-color: #f7f8fa;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  position: relative; /* 为数字标签定位 */
+}
+
+/* 新增：视频数字标签 */
+.video-label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 5;
+  width: 32px;
+  height: 32px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1rem;
+  pointer-events: none; /* 让鼠标可以穿透标签点击视频 */
+}
+
+.video-card video {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+  background-color: #e9ebee;
+}
+
+/* 左右滚动箭头按钮 */
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: background-color 0.2s, transform 0.2s;
+}
+.scroll-btn:hover {
+  background-color: #fff;
+  transform: translateY(-50%) scale(1.1);
+}
+.scroll-btn.left {
+  left: -20px;
+}
+.scroll-btn.right {
+  right: -20px;
+}
+
+/* 底部注释 */
+.tldr-footer {
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: #8a8d91;
+}
+
+/* --- 新增 Answer 部分样式 --- */
+  
+.answer-wrapper {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.answer-toggle {
+  background: transparent;
+  border: 1px solid #cbd5e1;
+  border-radius: 20px;
+  padding: 5px 15px;
+  font-size: 0.9rem;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.answer-toggle:hover {
+  background-color: #fff;
+  border-color: #94a3b8;
+  color: #0f172a;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* 箭头动画 */
+.answer-toggle .arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  font-size: 0.7rem;
+}
+
+/* 当激活时，旋转箭头 */
+.answer-toggle.active .arrow {
+  transform: rotate(180deg);
+}
+
+.answer-content {
+  max-height: 0; /* 默认隐藏 */
+  overflow: hidden;
+  transition: max-height 0.4s ease-out, opacity 0.4s ease;
+  opacity: 0;
+  margin-top: 0;
+  text-align: center;
+  font-family: monospace; /* 用等宽字体显示数字更清晰 */
+  font-size: 1rem;
+  color: #334155;
+}
+
+/* 激活显示状态 */
+.answer-content.open {
+  max-height: 100px; /* 足够显示内容的高度 */
+  opacity: 1;
+  margin-top: 10px;
+}
+
+/* 美化文字标签 */
+.label-real {
+  color: #16a34a; /* 绿色 */
+  font-weight: bold;
+}
+
+.label-fake {
+  color: #dc2626; /* 红色 */
+  font-weight: bold;
+  margin-left: 15px; /* 与前一个分开点 */
+}

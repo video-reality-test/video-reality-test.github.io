@@ -269,78 +269,181 @@
     </div>
   </section>
 
-
+<body>
+  
   <div class="container is-max-desktop">
   
-    <!-- 外层蓝色大框 -->
     <div class="tldr-container">
       
-      <!-- 顶部标题 -->
       <div class="tldr-header">
-        <h2 class="tldr-title">📖 Qualitative Gallery</h2>
-        <!-- <p class="tldr-desc">Swipe right to explore video generation results across different models.</p> -->
+        <h2 class="tldr-title">TL;DR: Can you identify which video is real?</h2>
       </div>
   
-      <!-- 滚动区域 -->
-      <div class="video-scroll-row">
+      <div class="scroller-wrapper">
+        
+        <button class="scroll-btn left" id="scroll-left">‹</button>
+
+        <div class="video-scroll-row" id="video-scroller">
   
-        <!-- 卡片 1: Real Video -->
+          <!-- 卡片 1 -->
+          <div class="video-card">
+            <div class="video-label">1</div>
+            <video controls playsinline muted loop autoplay>
+              <source src="./static/videos/gallery/4.mp4" type="video/mp4">
+            </video>
+          </div>
+  
+          <!-- 卡片 2 -->
+          <div class="video-card">
+            <div class="video-label">2</div>
+            <video controls playsinline muted loop autoplay>
+              <source src="./static/videos/gallery/39.mp4" type="video/mp4">
+            </video>
+          </div>
+
+         <!-- 卡片 3 -->
+         <div class="video-card">
+            <div class="video-label">3</div>
+            <video controls playsinline muted loop autoplay>
+              <source src="./static/videos/gallery/45.mp4" type="video/mp4">
+            </video>
+          </div>
+
+        <!-- 卡片 4 -->
         <div class="video-card">
-          <div class="card-header-example">📹 Real Footage</div>
-          <video controls playsinline muted loop autoplay>
-            <source src="./static/videos/example/real.mp4" type="video/mp4">
-          </video>
+            <div class="video-label">4</div>
+            <video controls playsinline muted loop autoplay>
+              <source src="./static/videos/gallery/48.mp4" type="video/mp4">
+            </video>
         </div>
-  
-        <!-- 卡片 2: Sora -->
+
+        <!-- 卡片 5 -->
         <div class="video-card">
-          <div class="card-header-example">🚀 Sora</div>
-          <video controls playsinline muted loop autoplay>
-            <source src="./static/videos/example/sora2.mp4" type="video/mp4">
-          </video>
+            <div class="video-label">5</div>
+            <video controls playsinline muted loop autoplay>
+              <source src="./static/videos/gallery/56.mp4" type="video/mp4">
+            </video>
         </div>
-  
-        <!-- 卡片 3: Veo -->
+
+        <!-- 卡片 6 -->
         <div class="video-card">
-          <div class="card-header-example">🤖 Veo 3.1</div>
-          <video controls playsinline muted loop autoplay>
-            <source src="./static/videos/example/veo3.1.mp4" type="video/mp4">
-          </video>
+            <div class="video-label">6</div>
+            <video controls playsinline muted loop autoplay>
+              <source src="./static/videos/gallery/58.mp4" type="video/mp4">
+            </video>
         </div>
-  
-        <!-- 卡片 4: Hunyuan -->
+
+        <!-- 卡片 7 -->
         <div class="video-card">
-          <div class="card-header-example">🐉 Hunyuan I2V</div>
-          <video controls playsinline muted loop autoplay>
-            <source src="./static/videos/example/hunyuan_i2v.mp4" type="video/mp4">
-          </video>
+            <div class="video-label">7</div>
+            <video controls playsinline muted loop autoplay>
+              <source src="./static/videos/gallery/59.mp4" type="video/mp4">
+            </video>
         </div>
-  
-        <!-- 卡片 5: Wan -->
+
+        <!-- 卡片 8 -->
         <div class="video-card">
-          <div class="card-header-example">🪐 Wan Video</div>
-          <video controls playsinline muted loop autoplay>
-            <source src="./static/videos/example/wan_086.mp4" type="video/mp4">
-          </video>
+            <div class="video-label">8</div>
+            <video controls playsinline muted loop autoplay>
+              <source src="./static/videos/gallery/62.mp4" type="video/mp4">
+            </video>
         </div>
-  
-        <!-- 卡片 6: OpenSora -->
+
+        <!-- 卡片 9 -->
         <div class="video-card">
-          <div class="card-header-example">✨ OpenSora</div>
-          <video controls playsinline muted loop autoplay>
-            <source src="./static/videos/example/opensora_newprompt_100_0085.mp4" type="video/mp4">
-          </video>
+            <div class="video-label">9</div>
+            <video controls playsinline muted loop autoplay>
+              <source src="./static/videos/gallery/76.mp4" type="video/mp4">
+            </video>
         </div>
-  
+
+        <!-- 卡片 10 -->
+        <div class="video-card">
+            <div class="video-label">10</div>
+            <video controls playsinline muted loop autoplay>
+              <source src="./static/videos/gallery/85.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <!-- 卡片 11 -->
+        <div class="video-card">
+            <div class="video-label">11</div>
+            <video controls playsinline muted loop autoplay>
+              <source src="./static/videos/gallery/95.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <!-- 卡片 12 -->
+        <div class="video-card">
+            <div class="video-label">12</div>
+            <video controls playsinline muted loop autoplay>
+              <source src="./static/videos/gallery/97.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        </div>
+
+        <button class="scroll-btn right" id="scroll-right">›</button>
+
       </div>
   
-      <!-- 底部注释 -->
       <div class="tldr-footer">
-        Videos are set to fixed height for better alignment. Swipe to view more.
+        Videos are set to a fixed height for alignment. Swipe or use arrows to view more.
+      </div>
+
+      <!-- 新增的 Answer 区域 -->
+      <div class="answer-wrapper">
+        <button class="answer-toggle" id="btn-answer">
+          Answer <span class="arrow">▼</span>
+        </button>
+        
+        <div class="answer-content" id="box-answer">
+          <span class="label-real">Real:</span> 2, 6, 7, 11
+          <br> <!-- 手机端可能需要换行，或者直接一行显示 -->
+          <span class="label-fake">Fake:</span> 1, 3, 4, 5, 8, 9, 10, 12
+        </div>
       </div>
   
     </div>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- 原有的滚动逻辑 ---
+        const scroller = document.getElementById('video-scroller');
+        const scrollLeftBtn = document.getElementById('scroll-left');
+        const scrollRightBtn = document.getElementById('scroll-right');
+
+        if (scroller && scrollLeftBtn && scrollRightBtn) {
+            scrollRightBtn.addEventListener('click', () => {
+                const card = scroller.querySelector('.video-card');
+                const scrollAmount = card ? card.offsetWidth + 20 : 300;
+                scroller.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+
+            scrollLeftBtn.addEventListener('click', () => {
+                const card = scroller.querySelector('.video-card');
+                const scrollAmount = card ? card.offsetWidth + 20 : 300;
+                scroller.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+        }
+
+        // --- 新增：Answer 折叠逻辑 ---
+        const answerBtn = document.getElementById('btn-answer');
+        const answerBox = document.getElementById('box-answer');
+
+        if (answerBtn && answerBox) {
+            answerBtn.addEventListener('click', () => {
+                // 切换 active 类来控制箭头方向
+                answerBtn.classList.toggle('active');
+                // 切换 open 类来控制内容显示
+                answerBox.classList.toggle('open');
+            });
+        }
+    });
+  </script>
+
+</body>
 
   <!-- Abstract Section -->
   <section class="section">
