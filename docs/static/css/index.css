@@ -250,7 +250,7 @@ body {
 .tldr-desc {
   font-size: 1.1rem;
   color: #475569;
-  margin-top: 5px;
+  margin-top: -20px;
 }
 
 /* --- 滚动区域 --- */
